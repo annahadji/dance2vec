@@ -1,6 +1,6 @@
-# dance2vec
+# Simulating and analysing the movement of antennae of nestmates during the honeybee waggle dance :honeybee:
 
-## Running the model
+## Running the assimilation model :brain:
 
 ```
 [17:56:23] 🚀 dance2vec $ python simulate_antenna.py --help
@@ -51,7 +51,7 @@ Simulation options:
   --seed SEED           Seed to set. (default: 1)
 ```
 
-## Analysing the data
+## Analysing the data :chart_with_upwards_trend:
 
 ```
 (.venv) [17:31:50] 🚀 roslin-2022-analysis $ python build_dataset.py --help
@@ -70,4 +70,10 @@ optional arguments:
                         Calculate antenna angle using mid length / bend or full length. The default uses base to tip if available and midpoint as fallback.
 ```
 
-## Built With
+## Built With :hammer:
+
+- [Matplotlib](https://matplotlib.org/stable/) - main plotting library
+- [seaborn](https://seaborn.pydata.org/) - helper plotting library for some charts
+- [NumPy](https://numpy.org/) - main numerical library for data vectorisation
+- [Pandas](https://pandas.pydata.org/) - helper data manipulation library
+- [OpenCV](https://pypi.org/project/opencv-python/) - video loading and extraction library

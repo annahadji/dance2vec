@@ -2,6 +2,55 @@
 
 ## Running the model
 
+```
+[17:56:23] 🚀 dance2vec $ python simulate_antenna.py --help
+usage: simulate_antenna.py [-h] [--cx_noise CX_NOISE] [--cx_cpu4_memory_gain CX_CPU4_MEMORY_GAIN] [--recruit_antenna_flow_method {midpoint,left_only,right_only,single_antennae}] [--recruit_dont_clip_antenna_angles]
+                           [--experiment_name EXPERIMENT_NAME] [--cx_model {CXRecruitHoloBee,CXRecruitHoloFly}] [--recruit_angle_to_gravity RECRUIT_ANGLE_TO_GRAVITY] [--dancer_angle_to_gravity DANCER_ANGLE_TO_GRAVITY]
+                           [--max_antenna_pos MAX_ANTENNA_POS] [--add_noise] [--simulation_time SIMULATION_TIME] [--dt DT] [--antennal_positioning_dataset ANTENNAL_POSITIONING_DATASET] [--bee_id BEE_ID]
+                           [--remove_antennae_input] [--seed SEED]
+
+Configuration for experiments. Taken from https://github.com/nuric/pix2rule
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+CX options:
+
+  --cx_noise CX_NOISE   Level of noise to add to layer outputs of CX. (default: 0.0)
+  --cx_cpu4_memory_gain CX_CPU4_MEMORY_GAIN
+                        Rate of memory accumulation. (default: 0.005)
+
+Recruit options:
+
+  --recruit_antenna_flow_method {midpoint,left_only,right_only,single_antennae}
+                        Type of CX model to use in experiments. (default: midpoint)
+  --recruit_dont_clip_antenna_angles
+                        Whether or not to clip antennae angles if they exceed the maximum antennae position specified. (default: False)
+
+Simulation options:
+
+  --experiment_name EXPERIMENT_NAME
+                        Experiment name, default current datetime. (default: 20240207-1756)
+  --cx_model {CXRecruitHoloBee,CXRecruitHoloFly}
+                        Type of CX model to use in experiments. (default: CXRecruitHoloFly)
+  --recruit_angle_to_gravity RECRUIT_ANGLE_TO_GRAVITY
+                        Recruit's angle to gravity (degrees), going ccw from 0 N to 90 W, +- 180 S, -90 E. (default: None)
+  --dancer_angle_to_gravity DANCER_ANGLE_TO_GRAVITY
+                        Dancer's angle to gravity (degrees), going ccw from 0 N to 90 W, +- 180 S, -90 E. (default: None)
+  --max_antenna_pos MAX_ANTENNA_POS
+                        Max +ve valid angle of antenna relative to bees midline (degrees). Used if running prefect simulation. (default: None)
+  --add_noise           Add noise to any simulated antennae positions. (default: False)
+  --simulation_time SIMULATION_TIME
+                        Maximum simulation time (in seconds) per trial. (default: 3)
+  --dt DT               Time resolution to sample. Default records at base time (samples once per second) (default: 0.01)
+  --antennal_positioning_dataset ANTENNAL_POSITIONING_DATASET
+                        Path to real antennal positioning dataset. Defaults to None (i.e. no use). If provided, will feed this data to the model instead of simulating positions. (default: None)
+  --bee_id BEE_ID       Index of bee to monitor if antennal positioning dataset is given. If not specified, a random bee id will be visualised. (default: None)
+  --remove_antennae_input
+                        Don't use antenna info. Only available when using real antennal positions. (default: False)
+  --seed SEED           Seed to set. (default: 1)
+```
+
 ## Analysing the data
 
 ```

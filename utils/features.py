@@ -4,12 +4,35 @@ import math
 import pandas as pd
 import numpy as np
 import scipy.stats
+from typing import Tuple
 
 
 def angle_to_360(angle: float):
     """Convert angles between 0-180 and -180-0 to 0-360."""
     return (angle + 360) % 360
 
+def opposite_angle_quadrant(theta: float) -> float:
+    """Returns the angle in the opposite quadrant."""
+    if theta == 0.0:
+        return np.radians(180)
+    return theta - np.pi * np.sign(theta)
+
+def signed_delta_angle(target: float, source: float) -> float:
+    """Return the (smallest) signed delta angle between a target angle and a source,
+    i.e. the angle you'd need to rotate from source to reach target."""
+    return np.arctan2(np.sin(target - source), np.cos(target - source))
+
+def polar2cartesian(theta: float, r_length: float) -> Tuple[float, float]:
+    """Convert polar coordinates (e.g. home vector) to Cartesian coordinates."""
+    x_coord = np.round(r_length * np.cos(theta), decimals=3)
+    y_coord = np.round(r_length * np.sin(theta), decimals=3)
+    return x_coord, y_coord
+
+def cartesian2polar(x_coord: int, y_coord: int):
+    """Convert X, Y Cartesian coordinates to polar coordinates (r, angle)."""
+    rho = np.sqrt(x_coord ** 2 + y_coord ** 2)
+    phi = np.arctan2(y_coord, x_coord)
+    return rho, phi
 
 def orientation_vector(bees_df_for_frame: pd.DataFrame) -> np.ndarray:
     """Compute the orientation vector of a bee in a frame. Orientation is regarded as
@@ -392,3 +415,30 @@ def compute_circmean_over_windows(angles, window_size) -> np.ndarray:
         windows, high=np.pi, low=-np.pi, axis=1
     )
     return circ_mean_for_each_window
+
+
+def compute_predictability(counts_dict: dict) -> dict:
+    """Compute the predictability index for all entries in given dict."""
+    dur_to_predictability = {}
+    for dur in counts_dict:
+        if (
+            counts_dict[dur]["RR"] + counts_dict[dur]["RL"] == 0
+            or counts_dict[dur]["LL"] + counts_dict[dur]["LR"] == 0
+        ):
+            dur_to_predictability[dur] = -1
+            continue
+        tp_rr = counts_dict[dur]["RR"] / (
+            counts_dict[dur]["RR"] + counts_dict[dur]["RL"]
+        )
+        tp_rl = counts_dict[dur]["RL"] / (
+            counts_dict[dur]["RR"] + counts_dict[dur]["RL"]
+        )
+        tp_ll = counts_dict[dur]["LL"] / (
+            counts_dict[dur]["LL"] + counts_dict[dur]["LR"]
+        )
+        tp_lr = counts_dict[dur]["LR"] / (
+            counts_dict[dur]["LL"] + counts_dict[dur]["LR"]
+        )
+        predictability_index = 1 - (tp_rr * tp_rl + tp_ll * tp_lr)
+        dur_to_predictability[dur] = predictability_index
+    return dur_to_predictability

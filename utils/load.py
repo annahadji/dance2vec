@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import cv2
 
-import features
+from . import features
 
 FONT = cv2.FONT_HERSHEY_SIMPLEX
 

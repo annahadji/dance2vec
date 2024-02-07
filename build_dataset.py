@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 import scipy.stats
 
-import load
-import features
+import utils.load as load
+import utils.features as features
 
 
 def build_antenna_dataset(

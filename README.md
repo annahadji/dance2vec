@@ -1,6 +1,8 @@
-# Analysing antennal positioning during the waggle dance :honeybee:
+# Analysing antennal positioning during the :honeybee: dance
 
 ## Running the assimilation model :brain:
+
+The assimilation model can be run for different follower - dancer orientations in simulation (perfect and noisy) as well as on the antennal positioning data from real bees (labelled data).
 
 ```
 [17:56:23] 🚀 dance2vec $ python simulate_antenna.py --help
@@ -52,6 +54,8 @@ Simulation options:
 ```
 
 ## Analysing the data :chart_with_upwards_trend:
+
+Two datasets will need to be built in order to analyse (1) the raw antennal positions (from labelled data) and (2) the errors of the resulting flight vectors from the assimilation model with the corresponding antennal positioning data.
 
 ```
 (.venv) [17:31:50] 🚀 roslin-2022-analysis $ python build_dataset.py --help

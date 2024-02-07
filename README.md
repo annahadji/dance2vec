@@ -1,4 +1,4 @@
-# Analysing the antennae of nestmates during the waggle dance :honeybee:
+# Analysing antennal positioning during the waggle dance :honeybee:
 
 ## Running the assimilation model :brain:
 

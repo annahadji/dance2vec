@@ -6,7 +6,7 @@
 
 **Example video (Video S1):**
 
-[![Video thumbnail](thumbnail.png)](https://ars.els-cdn.com/content/image/1-s2.0-S0960982224002203-mmc2.mp4)
+[![Video thumbnail](video_thumbnail.png)](https://ars.els-cdn.com/content/image/1-s2.0-S0960982224002203-mmc2.mp4)
 
 ## Running the assimilation model :brain:
 

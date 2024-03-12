@@ -1,5 +1,13 @@
 # Analysing antennal positioning during the :honeybee: dance
 
+**Paper:** Hadjitofi, A. & Webb, B. (2024). Dynamic antennal positioning allows honeybee followers to decode the dance. _Current Biology_, https://doi.org/10.1016/j.cub.2024.02.045
+
+**Data:** Hadjitofi, A. & Webb, B. (2024). Honeybee antennal positioning data when following dances. figshare. Dataset. https://doi.org/10.6084/m9.figshare.24715977
+
+**Example video (Video S1):**
+
+[![Video thumbnail](thumbnail.png)](https://ars.els-cdn.com/content/image/1-s2.0-S0960982224002203-mmc2.mp4)
+
 ## Running the assimilation model :brain:
 
 The assimilation model can be run for different follower - dancer orientations in simulation (perfect and noisy) as well as on the antennal positioning data from real bees (labelled data).
@@ -11,7 +19,7 @@ usage: simulate_antenna.py [-h] [--cx_noise CX_NOISE] [--cx_cpu4_memory_gain CX_
                            [--max_antenna_pos MAX_ANTENNA_POS] [--add_noise] [--simulation_time SIMULATION_TIME] [--dt DT] [--antennal_positioning_dataset ANTENNAL_POSITIONING_DATASET] [--bee_id BEE_ID]
                            [--remove_antennae_input] [--seed SEED]
 
-Configuration for experiments. Taken from https://github.com/nuric/pix2rule
+Configuration for experiments. Inspired by https://github.com/nuric/pix2rule
 
 optional arguments:
   -h, --help            show this help message and exit
